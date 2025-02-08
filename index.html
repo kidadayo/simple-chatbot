@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千葉県医師確保計画チャット</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>千葉県医師確保計画Q&A</h1>
+            <div class="api-status">
+                <span id="apiStatus"></span>
+                <button id="settingsButton" onclick="showSettings()">
+                    <span class="gear-icon">⚙</span> APIキー設定
+                </button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="questionInput" placeholder="質問を入力してください（例：医師確保計画とは？）" />
+            <button onclick="sendMessage()">送信</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Google PaLM APIキー設定</h2>
+            <div class="api-key-section">
+                <h3>現在のAPIキーの状態</h3>
+                <div id="currentApiStatus" class="api-status-display"></div>
+                <button onclick="checkApiKey()" class="check-button">APIキーを確認</button>
+            </div>
+            <div class="api-key-input-section">
+                <h3>APIキーの更新</h3>
+                <div class="api-key-input">
+                    <input type="password" id="apiKeyInput" placeholder="AIza..." />
+                    <button onclick="saveApiKey()">保存</button>
+                </div>
+            </div>
+            <div class="note">
+                <p>※APIキーはブラウザのローカルストレージに保存され、サーバーには送信されません。</p>
+                <p>※APIキーはGoogle Cloud Consoleから取得できます：<br>
+                <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener noreferrer">https://makersuite.google.com/app/apikey</a></p>
+            </div>
+            <button onclick="closeSettings()" class="close-button">閉じる</button>
+            <div id="apiKeyStatus"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
